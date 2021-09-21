@@ -29,7 +29,8 @@ def main_loop():
         word, translation = [x.strip('"') for x in line.split(";")]
         masked_word = mask_word(word, mask_count=2)
 
-        print(f"Слово: {masked_word}")
+        print(f"Угадай слово.")
+        print(f"Подсказка: {masked_word}")
         print(f"Перевод: {translation}")
         answer = input("Введите ответ: ")
         if not answer:
