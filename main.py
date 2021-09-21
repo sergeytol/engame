@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
+import os
 import random
 from time import sleep
 
 
 def load_lines():
-    with open("5000_words.txt", "r") as file:
+    with open(os.path.dirname(os.path.realpath(__file__)) + "/5000_words.txt", "r") as file:
         return file.read().splitlines()
 
 
@@ -32,11 +33,11 @@ def main_loop():
         print(f"Перевод: {translation}")
         answer = input("Введите ответ: ")
         if not answer:
-            return
-        if word.lower() == answer.lower():
-            print("\033[92mПравильно!", word, translation)
+            print("\033[93mПравильный ответ: ", f"{word} - {translation}")
+        elif word.lower() == answer.lower():
+            print("\033[92mПравильно!", f"{word} - {translation}")
         else:
-            print("\033[91mНе правильно.", word, translation)
+            print("\033[91mНе правильно.", f"{word} - {translation}")
         sleep(1)
         print("\033[0m")
 
